@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @media screen and (min-height: 651px) {
+                .center-elements {
+                    background-color: grey; /*debug*/
+                    margin: 0;
+                    position: absolute;
+                    bottom:300px;
+                    left:50%;
+                    -ms-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                    width:272px;
+                }
+            }
+            @media screen and (max-height: 650px) {
+                .center-elements {
+                    background-color: black; /*debug*/
+                    margin: auto;
+                    width:272px;
+                    padding-top: 50px;
+                }
+            }
+            .search-form {
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center-elements">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo">
+            <form class="search-form">
+                <input type="text" id="search-box" name="search-box">
+                <input type="submit" value="Google Search">
+            </form>
+        </div>
+    </body>
+</html>
