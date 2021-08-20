@@ -9,11 +9,12 @@
             }
             .center-elements-container {
                 display: flex;
-                background: grey;
+                background: white;
                 align-items: center;
                 flex-direction: column;
-               /* padding-top: 200px;*/
-                height: 800 px;
+                padding-top: 200px;
+                height: 250px;
+                justify-content: space-evenly;
             }
             .center-elements{
                 background: white;
@@ -22,28 +23,32 @@
             .search-container {
                 display: flex;
                 flex-direction: column;
+                height: 200px;
+                justify-content: space-evenly;
             }
             #search-box {
-                height: 30px;
+                height: 32px;
                 padding: 5px;
-                width: 400px;
+                width: 580px;
                 border: 1px solid #dfe1e5;
                 border-radius: 25px 25px 25px 25px;
             }
             .search-buttons-container {
                 background: white;
                 display: flex;
-                justify-content:space-evenly;
+                justify-content:center;
             }
             .search-button {
                 border: 1px solid #f8f9fa;
                 background-color: #f8f9fa;
                 padding-top: 8px;
                 padding-bottom: 8px;
+                padding-right: 12px;
+                padding-left: 12px;
                 color: #3c4043;
                 font-size: 15px;
                 border-radius: 5px 5px 5px 5px;
-                width: 140px;
+                margin: 5px;
             }
             .top-bar-container {
                 padding: 28px;
@@ -60,7 +65,7 @@
                 <input type="text" id="search-box" name="search-box">
                 <div class="search-buttons-container">
                     <input class="search-button" type="submit" value="Google Search">
-                    <input class="search-button" type="submit" value="I'm feeling lucky">
+                    <input class="search-button" type="submit" value="I'm Feeling Lucky">
                 </div>
             </form>
         </div>
