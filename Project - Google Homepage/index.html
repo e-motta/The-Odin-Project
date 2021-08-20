@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <style>
-            @media screen and (min-height: 651px) {
-                .center-elements {
-                    background-color: grey; /*debug*/
-                    margin: 0;
-                    position: absolute;
-                    bottom:300px;
-                    left:50%;
-                    -ms-transform: translate(-50%, -50%);
-                    transform: translate(-50%, -50%);
-                    width:272px;
-                }
+            .material-icons {
+                color: #9aa0a6;
             }
-            @media screen and (max-height: 650px) {
-                .center-elements {
-                    background-color: black; /*debug*/
-                    margin: auto;
-                    width:272px;
-                    padding-top: 50px;
-                }
+            .center-elements-container {
+                display: flex;
+                background: grey;
+                align-items: center;
+                flex-direction: column;
+               /* padding-top: 200px;*/
+                height: 800 px;
             }
-            .search-form {
-                padding: 20px;
+            .center-elements{
+                background: white;
+                width: 272px;
+            }
+            .search-container {
+                display: flex;
+                flex-direction: column;
+            }
+            #search-box {
+                height: 30px;
+                padding: 5px;
+                width: 400px;
+                border: 1px solid #dfe1e5;
+                border-radius: 25px 25px 25px 25px;
+            }
+            .search-buttons-container {
+                background: white;
+                display: flex;
+                justify-content:space-evenly;
+            }
+            .search-button {
+                border: 1px solid #f8f9fa;
+                background-color: #f8f9fa;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                color: #3c4043;
+                font-size: 15px;
+                border-radius: 5px 5px 5px 5px;
+                width: 140px;
+            }
+            .top-bar-container {
+                padding: 28px;
             }
         </style>
     </head>
     <body>
-        <div class="center-elements">
-            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo">
-            <form class="search-form">
+        <div class="top-bar-container">
+            
+        </div>
+        <div class="center-elements-container">
+            <img class="center-elements" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo">
+            <form class="search-container">
                 <input type="text" id="search-box" name="search-box">
-                <input type="submit" value="Google Search">
+                <div class="search-buttons-container">
+                    <input class="search-button" type="submit" value="Google Search">
+                    <input class="search-button" type="submit" value="I'm feeling lucky">
+                </div>
             </form>
+        </div>
+        <div class="bottom-bar-container">
+            
         </div>
     </body>
 </html>
