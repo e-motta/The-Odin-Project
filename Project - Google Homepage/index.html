@@ -46,18 +46,65 @@
                 padding-right: 12px;
                 padding-left: 12px;
                 color: #3c4043;
-                font-size: 15px;
+                font-size: 14px;
                 border-radius: 5px 5px 5px 5px;
                 margin: 5px;
             }
             .top-bar-container {
-                padding: 28px;
+                padding: 14px;
+                display: flex;
+                justify-content: flex-end;
             }
+            .top-bar-elements {
+                color: rgba(0,0,0,0.87);
+                font-family: arial;
+                font-size: 13px;
+                align-self: center;
+                text-decoration: none;
+                padding-right: 12px;
+            }
+            .menu-links-container {
+                display: flex;
+            }
+            .menu-buttons-container {
+                padding-right: 5px
+            }
+            .avatar {
+                width: 32px;
+                border-radius: 50%;
+            }
+            .menu-icon {
+                padding-right: 12px;
+                font-size: 18px;
+            }
+            .bottom-bar-outer {
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                padding: 15px;
+                background-color: rgb(242, 242, 242);
+            }
+            .bottom-bar-inner {
+                display: flex;
+                font-family: arial;
+                font-size: 14px;
+                text-decoration: none;
+                color: #70757a;
+                padding-right: 12px;
+                padding-left: 12px;
         </style>
     </head>
     <body>
         <div class="top-bar-container">
-            
+            <div class="menu-links-container">
+                <a class="top-bar-elements" href="#">Gmail</a>
+                <a class="top-bar-elements" href="#">Images</a>
+            </div>
+            <div class="menu-buttons-container">
+                <a href="https://github.com/e-motta">
+                    <img class="avatar" src="avatar.jpeg" alt="Avatar">
+                </a>
+            </div>
         </div>
         <div class="center-elements-container">
             <img class="center-elements" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google logo">
@@ -69,8 +116,18 @@
                 </div>
             </form>
         </div>
-        <div class="bottom-bar-container">
-            
+        <div class="bottom-bar-outer">
+            <div class="bottom-bar-inner">
+                <a class="bottom-bar-inner" href="#">About</a>
+                <a class="bottom-bar-inner" href="#">Advertising</a>
+                <a class="bottom-bar-inner" href="#">Business</a>
+                <a class="bottom-bar-inner" href="#">How search works</a>
+            </div>
+            <div class="bottom-bar-inner">
+                <a class="bottom-bar-inner" href="#">Privacy</a>
+                <a class="bottom-bar-inner" href="#">Terms</a>
+                <a class="bottom-bar-inner" href="#">Settings</a>
+            </div>
         </div>
     </body>
 </html>
