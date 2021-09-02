@@ -6,7 +6,7 @@ function randomComputerPlay() {
 
 
 function userPlay() {
-    let input = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+    let input = prompt(`Choose Rock, Paper or Scissors`).toLowerCase();
     if (input !== `rock` && input !== `paper` && input !== `scissors`) {
         alert(`Invalid entry, try again`);
         return userPlay();
@@ -16,32 +16,32 @@ function userPlay() {
 }
 
 
-// Return array with two strings: [string (e.g. "You Lose! Paper beats Rock"), string ("win", "loss", or "tie")]
-// Second string will be used to tally up the score
+// Return array: [string (e.g. "You Lose! Paper beats Rock"), string ("win", "loss", or "tie")]
+// Second string will be used to tally up the score when playing the game
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === `rock`) {
         if (computerSelection === `rock`) {
-            return ["It's a tie! Both players chose rock", "tie"];
+            return [`It's a tie! Both players chose rock`, `tie`];
         } else if (computerSelection === `paper`) {
-            return ["You lose! Paper beats rock", "loss"];
+            return [`You lose! Paper beats rock`, `loss`];
         } else {
-            return ["You win! Rock beats scissors", "win"];
+            return [`You win! Rock beats scissors`, `win`];
         }
     } else if (playerSelection === `paper`) {
         if (computerSelection === `rock`) {
-            return ["You win! Paper beats rock", "win"];
+            return [`You win! Paper beats rock`, `win`];
         } else if (computerSelection === `paper`) {
-            return ["It's a tie! Both player chose paper", "tie"];
+            return [`It's a tie! Both player chose paper`, `tie`];
         } else {
-            return ["You lose! Scissors beat rock!", "loss"];
+            return [`You lose! Scissors beat rock!`, `loss`];
         }
     } else {
         if (computerSelection === `rock`) {
-            return ["You lose! Rock beats scissors", "loss"];
+            return [`You lose! Rock beats scissors`, `loss`];
         } else if (computerSelection === `paper`) {
-            return ["You win! Scissors beat paper", "win"];
+            return [`You win! Scissors beat paper`, `win`];
         } else {
-            return ["It's a tie! Both player chose scissors", "tie"];
+            return [`It's a tie! Both player chose scissors`, `tie`];
         }
     }
 }
@@ -54,14 +54,14 @@ function game() {
     let roundTies = 0;
     for (i = 0; i < 5; i++) {
         let [message, result] = playRound(userPlay(), randomComputerPlay());
-        if (result === "win") {
+        console.log(message);
+        if (result === `win`) {
             roundWins++;
-        } else if (result === "loss") {
+        } else if (result === `loss`) {
             roundLosses++;
         } else {
             roundTies++;
         }
-        console.log(message);
     }
     let score = `Wins: ${roundWins}, Losses: ${roundLosses}, Ties: ${roundTies}`
     if (roundWins > roundLosses) {
