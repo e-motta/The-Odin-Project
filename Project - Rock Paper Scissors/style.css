@@ -1,24 +1,26 @@
 html {
-    font-size: 10px;
+    font-size: 14px;
     background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   }
 
-#buttons {
+#game {
     display: flex;
     flex: 1;
+    flex-wrap: wrap;
     align-items: center;
+    align-content: center;
     justify-content: center;
     min-height: 100vh;
 }
 
 .btn {
-    border: .4rem solid rgba(0, 0, 0, 0.836);
+    border: .5rem solid rgba(0, 0, 0, 0.836);
     border-radius: 50%;
-    margin: 3rem;
+    margin: 4rem;
     padding: 1rem .5rem;
     transition: all .07s; /**/
-    width: 16rem;
-    height: 14rem;
+    width: 12rem;
+    height: 10rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
 }
@@ -28,6 +30,14 @@ button {
     margin: none;
     padding: none;
     background-color:rgba(255, 255, 255, 0);
+}
+
+#score {
+    width: 100%;
+    text-align: center;
+    height: 30rem;
+    font-family: Monaco;
+    font-size: 3em;
 }
 
 #rock {
