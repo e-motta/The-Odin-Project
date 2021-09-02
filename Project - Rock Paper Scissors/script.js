@@ -72,3 +72,9 @@ function game() {
         console.log(`The game is a tie! ${score}`)
     }
 }
+
+
+const buttons = document.getElementsByClassName("btn");
+buttons[0].addEventListener('click', play => console.log("test")); // rock button
+buttons[1].addEventListener('click', play => console.log("test")); // paper button
+buttons[2].addEventListener('click', play => console.log("test")); // scissors button

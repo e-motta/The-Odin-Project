@@ -16,7 +16,7 @@ html {
     border-radius: 50%;
     margin: 3rem;
     padding: 1rem .5rem;
-    transition: all .07s;
+    transition: all .07s; /**/
     width: 16rem;
     height: 14rem;
     text-align: center;
