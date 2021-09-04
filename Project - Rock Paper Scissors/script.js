@@ -6,14 +6,15 @@ function randomComputerPlay() { // OK
 
 function gameOver(playerScore, computerScore, roundPlays, roundResult) {
     if (playerScore.innerText == 5 || computerScore.innerText == 5) {
-        // Announce game won or lost, ask if new game
-        console.log(`Game over`)
-        // Clears score
+        roundPlays.innerHTML = `<div class="final-score">FINAL SCORE<br>${playerScore.innerText} x ${computerScore.innerText}</div>`
+        if (playerScore.innerText == 5) {
+            roundResult.innerText = `Congratulations, you win!`;
+        } else {
+            roundResult.innerText = `You lose!`;
+        }
         playerScore.innerText = 0;
         computerScore.innerText = 0;
-        roundPlays.innerHTML = ``;
-        roundResult.innerHTML = ``;
-    }
+    }   
 }
 
 
@@ -24,44 +25,46 @@ function playRound(playerSelection, computerSelection) { // OK
     const playerScore = document.getElementById(`player score`);
     const computerScore = document.getElementById(`computer score`);
 
-    roundPlays.innerHTML = `You chose ${playerSelection}. The opponent chose ${computerSelection}.`
-    
+    roundPlays.innerHTML = `<img src="/imgs/${playerSelection}.png" class="play"></img>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <img src="/imgs/${computerSelection}.png" class="play"></img>`
+
     if (playerSelection === `rock`) {
         if (computerSelection === `rock`) {
-            roundResult.innerHTML = `It's a tie! Both players chose rock.`;
+            roundResult.innerText = `It's a tie! Both players chose rock.`;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         } else if (computerSelection === `paper`) {
-            roundResult.innerHTML = `You lose! Paper beats rock!`;
+            roundResult.innerText = `You lose! Paper beats rock!`;
             computerScore.innerText = +computerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         } else {
-            roundResult.innerHTML = `You win! Rock beats scissors!`;
+            roundResult.innerText = `You win! Rock beats scissors!`;
             playerScore.innerText = +playerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         }
     } else if (playerSelection === `paper`) {
         if (computerSelection === `rock`) {
-            roundResult.innerHTML = `You win! Paper beats rock!`;
+            roundResult.innerText = `You win! Paper beats rock!`;
             playerScore.innerText = +playerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         } else if (computerSelection === `paper`) {
-            roundResult.innerHTML = `It's a tie! Both player chose paper.`;
+            roundResult.innerText = `It's a tie! Both player chose paper.`;
         } else {
-            roundResult.innerHTML = `You lose! Scissors beat rock!`;
+            roundResult.innerText = `You lose! Scissors beat rock!`;
             computerScore.innerText = +computerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         }
     } else {
         if (computerSelection === `rock`) {
-            roundResult.innerHTML = `You lose! Rock beats scissors!`;
+            roundResult.innerText = `You lose! Rock beats scissors!`;
             computerScore.innerText = +computerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         } else if (computerSelection === `paper`) {
-            roundResult.innerHTML = `You win! Scissors beat paper!`;
+            roundResult.innerText = `You win! Scissors beat paper!`;
             playerScore.innerText = +playerScore.innerText + 1;
             gameOver(playerScore, computerScore, roundPlays, roundResult);
         } else {
-            roundResult.innerHTML = `It's a tie! Both player chose scissors.`;
+            roundResult.innerText = `It's a tie! Both player chose scissors.`;
         }
     }
 }

@@ -39,6 +39,7 @@ button {
     box-shadow: 0 0 1rem #ffeba3;
   }
 
+  
 #score {
     width: 100%;
     text-align: center;
@@ -65,4 +66,13 @@ button {
 #scissors {
     background-image: url("/imgs/scissors.png");
     background-size: cover;
+}
+
+.play {
+    width: 3em;
+}
+
+.final-score {
+    font-size: 2em;
+    font-weight: bold;
 }
