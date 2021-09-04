@@ -102,10 +102,5 @@ function removeTransition(e) {
 }
 
 const btns = document.querySelectorAll('.btn');
+btns.forEach(btn => btn.addEventListener('click', click))
 btns.forEach(btn => btn.addEventListener('transitionend', removeTransition));
-
-const buttons = document.getElementsByClassName("btn");
-buttons[0].addEventListener('click', click); // rock button
-buttons[1].addEventListener('click', click); // paper button
-buttons[2].addEventListener('click', click); // scissors button
-
