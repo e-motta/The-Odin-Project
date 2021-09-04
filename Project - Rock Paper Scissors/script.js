@@ -25,9 +25,9 @@ function playRound(playerSelection, computerSelection) { // OK
     const playerScore = document.getElementById(`player score`);
     const computerScore = document.getElementById(`computer score`);
 
-    roundPlays.innerHTML = `<img src="/imgs/${playerSelection}.png" class="play"></img>
+    roundPlays.innerHTML = `<img src="./imgs/${playerSelection}.png" class="play"></img>
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <img src="/imgs/${computerSelection}.png" class="play"></img>`
+            <img src="./imgs/${computerSelection}.png" class="play"></img>`
 
     if (playerSelection === `rock`) {
         if (computerSelection === `rock`) {
