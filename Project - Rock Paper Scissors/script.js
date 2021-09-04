@@ -90,9 +90,22 @@ function playRound(playerSelection, computerSelection) { // OK
 
 // }
 
+function click (e) {
+    playRound(e.path[0].id, randomComputerPlay());
+    const btn = e.path[0];
+    btn.classList.toggle('clicking');
+}
+
+function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('clicking');
+}
+
+const btns = document.querySelectorAll('.btn');
+btns.forEach(btn => btn.addEventListener('transitionend', removeTransition));
 
 const buttons = document.getElementsByClassName("btn");
-buttons[0].addEventListener('click', () => playRound(document.getElementById("rock").id, randomComputerPlay())); // rock button
-buttons[1].addEventListener('click', () => playRound(document.getElementById("paper").id, randomComputerPlay())); // paper button
-buttons[2].addEventListener('click', () => playRound(document.getElementById("scissors").id, randomComputerPlay())); // scissors button
+buttons[0].addEventListener('click', click); // rock button
+buttons[1].addEventListener('click', click); // paper button
+buttons[2].addEventListener('click', click); // scissors button
 
