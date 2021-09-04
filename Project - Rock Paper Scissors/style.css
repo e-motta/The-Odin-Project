@@ -23,6 +23,7 @@ html {
     height: 10rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 button {
@@ -44,6 +45,11 @@ button {
     height: 30rem;
     font-family: Monaco;
     font-size: 3em;
+}
+
+#round-score {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 #rock {
