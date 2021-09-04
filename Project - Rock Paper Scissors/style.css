@@ -54,12 +54,12 @@ button {
 }
 
 #rock {
-    background-image: url("/imgs/rock.png");
+    background-image: url("./imgs/rock.png");
     background-size: cover;
 }
 
 #paper {
-    background-image: url("/imgs/paper.png");
+    background-image: url("./imgs/paper.png");
     background-size: cover;
 }
 
