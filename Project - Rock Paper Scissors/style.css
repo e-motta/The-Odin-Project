@@ -64,7 +64,7 @@ button {
 }
 
 #scissors {
-    background-image: url("/imgs/scissors.png");
+    background-image: url("./imgs/scissors.png");
     background-size: cover;
 }
 
