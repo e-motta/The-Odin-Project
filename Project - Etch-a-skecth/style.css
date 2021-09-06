@@ -1,0 +1,20 @@
+.outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clear-button {
+    padding: 1rem;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+.grid-container {
+    width: 600px;
+    height: 600px;
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(16, auto);
+    grid-template-rows: repeat(16 auto);
+}
