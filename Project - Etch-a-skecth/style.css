@@ -15,6 +15,11 @@
     height: 600px;
     background-color: red;
     display: grid;
-    grid-template-columns: repeat(16, auto);
-    grid-template-rows: repeat(16 auto);
+    grid-template-columns: repeat(16, auto); /* automate later */
+    grid-template-rows: repeat(16, auto); /* automate later */
+}
+
+.squares {
+    background-color: green;
+    border: 1px solid pink;
 }
