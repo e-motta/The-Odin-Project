@@ -1,29 +1,30 @@
-// Create squares in fixed grid
+// Create squares in fixed grid. Grid size is defined in CSS.
 const container = document.querySelector('.grid-container');
 let numberOfLines = 16
 let numberOfSquares = numberOfLines ** 2;
 
 for(let i = 0; i < numberOfSquares; i++) {
-    const newDiv = document.createElement('div');
-    container.append(newDiv);
+    const square = document.createElement('div');
+    container.append(square);
 }
 
-// Add class to squares
 const squares = container.querySelectorAll('div');
 
-// Default color
+// Default color for grid.
 squares.forEach((e) => e.classList.add('squares-default'));
 
-// Hover color
+// Color when hovering mouse over grid.
 function mouseHover(e) {
     this.classList.add('squares-hover');
 }
 squares.forEach((e) => e.addEventListener('mouseover', mouseHover));
 
-// Clear grid
+// Clear grid when button is pressed.
 function clearGrid() {
-    console.log(squares) // DEBUG
-    squares.forEach((e) => e.classList.add('squares-default'));
+    squares.forEach((e) => e.classList.remove('squares-hover'));
 }
 const clearButton = document.querySelector('.clear-button');
-clearButton.addEventListener('click', () => clearGrid()) // FIX ME!
+clearButton.addEventListener('click', () => clearGrid());
+
+// Ask user for number of squares when button is pressed.
+// Must update HTML and CSS.

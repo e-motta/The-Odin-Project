@@ -12,8 +12,8 @@ html {
 
 .clear-button {
     padding: .5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     border: 2px solid rgb(78, 0, 0);
     background-color: rgb(151, 0, 4);
     color: rgb(219, 199, 90);
@@ -21,7 +21,7 @@ html {
     font-family: cursive;
     font-size: 30px;
     cursor: pointer;
-    border-radius: 7%;
+    border-radius: 10px;
 }
 
 .border {
@@ -41,10 +41,8 @@ html {
 
 .squares-default {
     background-color: rgb(240, 240, 240);
-    border: 1px solid rgb(240, 240, 240);
 }
 
 .squares-hover {
     background-color: rgb(32, 32, 32);
-    border: 1px solid rgb(32, 32, 32);
 }
