@@ -26,7 +26,7 @@ function clearGrid() {
 }
 
 function enterNumberOfLines() {
-    const newNumberOfLines = prompt('Enter the number of line for the grid (0-100)');
+    const newNumberOfLines = prompt('Enter the number of lines for the sketch (0-100)');
     if(newNumberOfLines > 0 && newNumberOfLines <= 100 && newNumberOfLines !== null && newNumberOfLines !== undefined) {
         return newNumberOfLines;
     } else {
