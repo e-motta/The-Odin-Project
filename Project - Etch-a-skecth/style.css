@@ -22,13 +22,20 @@ html {
     font-size: 30px;
     cursor: pointer;
     border-radius: 10px;
+    transition: all .02s;
+    box-shadow: 0 5px 10px black;
+}
+
+.clicking {
+    transform: scale(.98);
 }
 
 .border {
     background-color: rgb(151, 0, 4);
     border: 2px solid rgb(78, 0, 0);
     border-radius: 5%;
-    padding: 50px
+    padding: 50px;
+    box-shadow: 0 0 20px;
 }
 
 .grid-container {
@@ -37,12 +44,15 @@ html {
     display: grid;
     grid-template-columns: repeat(16, auto); /* automate later */
     grid-template-rows: repeat(16, auto); /* automate later */
+    box-shadow: 0 0 0 2px rgba(48, 48, 48, 0.5);
 }
 
 .squares-default {
     background-color: rgb(240, 240, 240);
+    border: 1px solid rgb(240, 240, 240);
 }
 
 .squares-hover {
     background-color: rgb(32, 32, 32);
+    border: 1px solid rgb(32, 32, 32);
 }

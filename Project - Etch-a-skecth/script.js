@@ -23,8 +23,19 @@ squares.forEach((e) => e.addEventListener('mouseover', mouseHover));
 function clearGrid() {
     squares.forEach((e) => e.classList.remove('squares-hover'));
 }
+function click(){
+    console.log(this)
+    this.classList.add('clicking');
+}
+function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('clicking');
+}
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', () => clearGrid());
+clearButton.addEventListener('click', click);
+clearButton.addEventListener('transitionend', removeTransition);
+
 
 // Ask user for number of squares when button is pressed.
 // Must update HTML and CSS.
