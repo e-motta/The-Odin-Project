@@ -1,4 +1,5 @@
-function createGrid(container, numberOfLines) { // FIXME: change CSS grid rows and columns
+function createGrid(container, numberOfLines) {
+    container.style.gridTemplateColumns = `repeat(${numberOfLines}, auto)`;
     let numberOfSquares = numberOfLines ** 2;
     for(let i = 0; i < numberOfSquares; i++) {
         const square = document.createElement('div');

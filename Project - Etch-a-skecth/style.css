@@ -42,8 +42,6 @@ html {
     width: 600px;
     height: 600px;
     display: grid;
-    grid-template-columns: repeat(16, auto); /* automate later */
-    grid-template-rows: repeat(16, auto); /* automate later */
     box-shadow: 0 0 0 2px rgba(48, 48, 48, 0.5);
 }
 
