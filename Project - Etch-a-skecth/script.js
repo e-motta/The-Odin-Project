@@ -20,9 +20,19 @@ function clearGrid() {
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     }
-    const newNumberOfLines = prompt('Please, enter the number of line for the grid (0-100)'); // FIXME: limit 1-100; null; undefined
+    const newNumberOfLines = enterNumberOfLines();
     createGrid(container, newNumberOfLines);
     this.classList.toggle('clicking');
+}
+
+function enterNumberOfLines() {
+    const newNumberOfLines = prompt('Enter the number of line for the grid (0-100)');
+    if(newNumberOfLines > 0 && newNumberOfLines <= 100 && newNumberOfLines !== null && newNumberOfLines !== undefined) {
+        return newNumberOfLines;
+    } else {
+        alert('Please, enter a number between 1 and 100')
+        return enterNumberOfLines();
+    }
 }
 
 function removeTransition(e) {
