@@ -46,7 +46,7 @@ body {
 }
 
 .buttons-container {
-    background-color: rgb(80, 50, 50);
+    background-color: rgb(67, 54, 51);
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 20% 20% 20% 20% 20%;
@@ -78,10 +78,10 @@ body {
 
 .logo {
     justify-self: center;
-    color: rgb(37, 27, 27);
+    color: rgb(97, 77, 73);
     padding-left: 10px;
     font-family: cursive;
-    font-size: 1.5rem;
+    font-size: 2.15rem;
 }
 
 .clear-button-container {
@@ -108,27 +108,27 @@ body {
 }
 
 .buttons {
-    background-color: blue;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 1.5rem;
     height: 5rem;
     width: 86px;
-    color: rgb(70, 0, 0);
+    color: rgb(39, 31, 29);
     font-size: 2.5rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.281);
+    cursor: pointer;
 }
 
 .number-buttons {
-    background-color: rgb(255, 169, 129);
+    background-color: rgb(184, 172, 160);
 }
 
 .operation-buttons {
-    background-color: rgb(255, 131, 73);
+    background-color: rgb(122, 112, 107);
 }
 
 .clear-button {
-    background-color: rgb(255, 214, 195);
+    background-color: rgb(247, 240, 245);
     height: 5rem;
     width: 187px;
     margin: 7px;

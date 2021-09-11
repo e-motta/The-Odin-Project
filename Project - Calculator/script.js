@@ -41,7 +41,7 @@ addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'number-bu
 addContentToButtons(numberButtonsContainer, [`7`, `8`, `9`, `4`, `5`, `6`, `1`, `2`, `3`, `0`, `=`]);
 numberButtonsContainer.querySelector("#btn-0").parentElement.style="width:200px";
 numberButtonsContainer.querySelector("#btn-0").style="width:187px";
-numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(255, 131, 73)"
+numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(122, 112, 107)"
 
 const operationButtonsContainer = document.querySelector('.outer-operation-buttons-container');
 createButtons(operationButtonsContainer, 4);
