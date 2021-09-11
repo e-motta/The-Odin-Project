@@ -1,11 +1,135 @@
-.buttons-container {
-    background-color: red;
+html {
+    font-size: 14px;
+    background-image: linear-gradient(180deg, #f1d6d2 0%, #644139 150%);
+    height: 100%;
+}
+
+body {
+    display: grid;
+    justify-items: center;
+
+}
+
+.border {
+    background-color: rgb(53, 45, 45);
+    border-radius: 20px;
+    margin: 4em;
+    box-shadow: 0 0 20px 5px rgba(48, 48, 48, 0.836);
+}
+
+.outer {
+    background-color: black;
     height: 600px;
     width: 400px;
     display: grid;
+    margin: 1.2rem;
+    grid-template-rows: 30% 70%;
+}
+
+.display {
+    background-color: rgb(61, 61, 61);
+    border: 2rem solid rgb(32, 30, 30);
+    color:rgb(177, 177, 177);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5rem;
+}
+
+.display-input {
+    display: flex;
+    justify-content: right;
+}
+
+.display-result {
+    font-size: 4rem;
+    display: flex;
+    justify-content: right;
+}
+
+.buttons-container {
+    background-color: rgb(80, 50, 50);
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.outer-clear-button-container {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: flex;
+    justify-content: space-around;
+}
+
+.outer-number-buttons-container {
+    grid-row-start: 2;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.outer-operation-buttons-container {
+    grid-row-start: 2;
+    grid-row-end: 6;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.logo {
+    justify-self: center;
+    color: rgb(37, 27, 27);
+    padding-left: 10px;
+    font-family: cursive;
+    font-size: 1.5rem;
+}
+
+.clear-button-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.number-buttons-container {
+    height: 25%;
+    width: 33.33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.operation-buttons-container {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons {
     background-color: blue;
-    border: 1px solid rgba(0, 0, 0, 0.5)
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 1.5rem;
+    height: 5rem;
+    width: 86px;
+    color: rgb(70, 0, 0);
+    font-size: 2.5rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.281);
+}
+
+.number-buttons {
+    background-color: rgb(255, 169, 129);
+}
+
+.operation-buttons {
+    background-color: rgb(255, 131, 73);
+}
+
+.clear-button {
+    background-color: rgb(255, 214, 195);
+    height: 5rem;
+    width: 187px;
+    margin: 7px;
 }
