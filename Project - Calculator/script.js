@@ -10,6 +10,7 @@ function operate (operator, a, b) {
     else if(operator === `–`) return subtract(a, b);
     else if(operator === `x`) return multiply(a, b);
     else if(operator === `÷`) return divide(a, b);
+    else return a;
 }
 
 function input () {
@@ -36,10 +37,14 @@ function clear () {
 function result (input) {
     const [a, b] = input.split(/[^0-9.]/);
     const operator = input.replace(/[0-9.]/g, '');
-    const output = operate(operator, a, b);
+    let output = operate(operator, a, b);
+    output = +parseFloat(output).toFixed(7);  // Max 7 decimals
+    if (output.toString().length > 9) output = output.toString().slice(0, 9);  // Max 9 characters
     const displayInput = document.querySelector(`.display-input`);
     displayInput.innerText = output;
 }
+
+// Function for removing clicking transition
 
 function removeTransition(e) {
     if(e.propertyName !== 'transform') return;
@@ -76,12 +81,10 @@ function addContentToButtons (container, buttonNames) {
 // Create all buttons
 
 const numberButtonsContainer = document.querySelector('.outer-number-buttons-container');
-createButtons(numberButtonsContainer, 11);
+createButtons(numberButtonsContainer, 12);
 addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'buttons');
 addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'number-buttons');
-addContentToButtons(numberButtonsContainer, [`7`, `8`, `9`, `4`, `5`, `6`, `1`, `2`, `3`, `0`, `=`]);
-numberButtonsContainer.querySelector("#btn-0").parentElement.style="width:200px";
-numberButtonsContainer.querySelector("#btn-0").style="width:187px";
+addContentToButtons(numberButtonsContainer, [`7`, `8`, `9`, `4`, `5`, `6`, `1`, `2`, `3`, `.`, `0`, `=`]);
 numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(138, 126, 121)";
 
 const operationButtonsContainer = document.querySelector('.outer-operation-buttons-container');
@@ -96,7 +99,7 @@ addClassToButtons(clearButtonContainer, 'clear-button-container', 'buttons');
 addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button');
 addContentToButtons(clearButtonContainer, [`AC`]);
 
-// Operations
+// Event listeners for operations
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
 numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
