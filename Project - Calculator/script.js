@@ -7,7 +7,7 @@ const divide = (a, b) => +a / +b;
 
 function operate (operator, a, b) {
     if(operator === `+`) return add(a, b);
-    else if(operator === `–`) return subtract(a, b);
+    else if(operator === `-`) return subtract(a, b);
     else if(operator === `x`) return multiply(a, b);
     else if(operator === `÷`) return divide(a, b);
     else return a;
@@ -16,16 +16,24 @@ function operate (operator, a, b) {
 function input () {
     this.classList.toggle('clicking');
     const displayInput = document.querySelector(`.display-input`)
-    if (this.innerText === `=`) {
-        return result(displayInput.innerText);
+
+    if (this.innerText === `+`
+            || this.innerText === `-`
+            || this.innerText === `x`
+            || this.innerText === `÷`) {
+        if (displayInput.innerText.includes(`+`)
+                || displayInput.innerText.includes(`-`)
+                || displayInput.innerText.includes(`x`)
+                || displayInput.innerText.includes(`÷`)) {
+            return;
+        }
     }
+
+    if (this.innerText === `=`) return result(displayInput.innerText);
     
-    if (displayInput.innerText === `0`) {
-        displayInput.innerText = ``;
-    }
-    if (displayInput.innerText.length < 9) {
-        displayInput.innerText += this.innerText;
-    }
+    if (displayInput.innerText === `0`) displayInput.innerText = ``;
+
+    if (displayInput.innerText.length < 9) displayInput.innerText += this.innerText;  // Max 9 characters
 }
 
 function clear () {
@@ -91,7 +99,7 @@ const operationButtonsContainer = document.querySelector('.outer-operation-butto
 createButtons(operationButtonsContainer, 4);
 addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'buttons');
 addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'operation-buttons');
-addContentToButtons(operationButtonsContainer, [`÷`, `x`, `–`, `+`]);
+addContentToButtons(operationButtonsContainer, [`÷`, `x`, `-`, `+`]);
 
 const clearButtonContainer = document.querySelector('.outer-clear-button-container');
 createButtons(clearButtonContainer, 1);
