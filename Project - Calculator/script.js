@@ -1,3 +1,5 @@
+// Functions for operations
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -10,10 +12,36 @@ function operate (operator, a, b) {
     else if(operator === `÷`) return divide(a, b);
 }
 
+function input () {
+    const displayInput = document.querySelector(`.display-input`)
+    if (this.innerText === `=`) {
+        return result(this.innerText);
+    }
+    
+    if (displayInput.innerText === `0`) {
+        displayInput.innerText = ``;
+    }
+    if (displayInput.innerText.length < 9) {
+        displayInput.innerText += this.innerText;
+    }
+}
+
+function clear () {
+    const displayInput = document.querySelector(`.display-input`)
+    displayInput.innerText = `0`;
+}
+
+function result () {
+    
+}
+
+// Functions for creating buttons
+
 function createButtons (container, numberOfButtons) {
     for(let i = 0; i < numberOfButtons; i++) {
         const div = document.createElement('div');
         const button = document.createElement('button');
+        button.type="button";
         div.append(button);
         container.append(div);
     }
@@ -33,6 +61,8 @@ function addContentToButtons (container, buttonNames) {
         buttons[i].id = `btn-${buttonNames[i]}`;
     }
 }
+
+// Create all buttons
 
 const numberButtonsContainer = document.querySelector('.outer-number-buttons-container');
 createButtons(numberButtonsContainer, 11);
@@ -55,4 +85,13 @@ addClassToButtons(clearButtonContainer, 'clear-button-container', 'buttons');
 addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button')
 addContentToButtons(clearButtonContainer, [`AC`]);
 
+// Operations
 
+const numberButtons = document.querySelectorAll('.number-buttons-container');
+numberButtons.forEach(btn => btn.addEventListener('click', input));
+
+const operationButtons = document.querySelectorAll('.operation-buttons-container');
+operationButtons.forEach(btn => btn.addEventListener('click', input));
+
+const clearButton = document.querySelector('.clear-button');
+clearButton.addEventListener('click', clear);

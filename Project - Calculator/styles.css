@@ -15,10 +15,10 @@ body {
     border-radius: 20px;
     margin: 4em;
     box-shadow: 0 0 20px 5px rgba(48, 48, 48, 0.836);
+    box-shadow: 0 0 5px 5px rgba(48, 48, 48, 0.836);
 }
 
 .outer {
-    background-color: black;
     height: 600px;
     width: 400px;
     display: grid;
@@ -32,14 +32,16 @@ body {
     color:rgb(177, 177, 177);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2.5rem;
+    padding: 4px;
+    display: grid;
 }
 
-.display-input {
+.display-result {
     display: flex;
     justify-content: right;
 }
 
-.display-result {
+.display-input {
     font-size: 4rem;
     display: flex;
     justify-content: right;
@@ -115,7 +117,7 @@ body {
     color: rgb(39, 31, 29);
     font-size: 2.5rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.281);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.651);
     cursor: pointer;
 }
 
