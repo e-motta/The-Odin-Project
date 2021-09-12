@@ -40,14 +40,21 @@ function clear () {
     this.classList.toggle('clicking');
     const displayInput = document.querySelector(`.display-input`);
     displayInput.innerText = `0`;
+    const displayResult = document.querySelector(`.display-result`);
+    displayResult.innerText = `ㅤ`;
 }
 
 function result (input) {
+    const displayResult = document.querySelector(`.display-result`);
+    displayResult.innerText = input;
+    
     const [a, b] = input.split(/[^0-9.]/);
     const operator = input.replace(/[0-9.]/g, '');
+    
     let output = operate(operator, a, b);
     output = +parseFloat(output).toFixed(7);  // Max 7 decimals
     if (output.toString().length > 9) output = output.toString().slice(0, 9);  // Max 9 characters
+    
     const displayInput = document.querySelector(`.display-input`);
     displayInput.innerText = output;
 }
