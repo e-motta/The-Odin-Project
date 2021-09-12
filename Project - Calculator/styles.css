@@ -123,11 +123,11 @@ body {
 }
 
 .number-buttons {
-    background-color: rgb(184, 172, 160);
+    background-color: rgb(199, 186, 173);
 }
 
 .operation-buttons {
-    background-color: rgb(122, 112, 107);
+    background-color: rgb(138, 126, 121);
 }
 
 .clear-button {
@@ -138,5 +138,5 @@ body {
 }
 
 .clicking {
-    transform: scale(.99)
+    transform: scale(.99) translateY(1.5px);
 }

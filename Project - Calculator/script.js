@@ -1,9 +1,9 @@
 // Functions for operations
 
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+const add = (a, b) => +a + +b;
+const subtract = (a, b) => +a - +b;
+const multiply = (a, b) => +a * +b;
+const divide = (a, b) => +a / +b;
 
 function operate (operator, a, b) {
     if(operator === `+`) return add(a, b);
@@ -16,7 +16,7 @@ function input () {
     this.classList.toggle('clicking');
     const displayInput = document.querySelector(`.display-input`)
     if (this.innerText === `=`) {
-        return result(this.innerText);
+        return result(displayInput.innerText);
     }
     
     if (displayInput.innerText === `0`) {
@@ -29,12 +29,16 @@ function input () {
 
 function clear () {
     this.classList.toggle('clicking');
-    const displayInput = document.querySelector(`.display-input`)
+    const displayInput = document.querySelector(`.display-input`);
     displayInput.innerText = `0`;
 }
 
-function result () {
-
+function result (input) {
+    const [a, b] = input.split(/[^0-9.]/);
+    const operator = input.replace(/[0-9.]/g, '');
+    const output = operate(operator, a, b);
+    const displayInput = document.querySelector(`.display-input`);
+    displayInput.innerText = output;
 }
 
 function removeTransition(e) {
@@ -78,30 +82,30 @@ addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'number-bu
 addContentToButtons(numberButtonsContainer, [`7`, `8`, `9`, `4`, `5`, `6`, `1`, `2`, `3`, `0`, `=`]);
 numberButtonsContainer.querySelector("#btn-0").parentElement.style="width:200px";
 numberButtonsContainer.querySelector("#btn-0").style="width:187px";
-numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(122, 112, 107)"
+numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(138, 126, 121)";
 
 const operationButtonsContainer = document.querySelector('.outer-operation-buttons-container');
 createButtons(operationButtonsContainer, 4);
 addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'buttons');
-addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'operation-buttons')
+addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'operation-buttons');
 addContentToButtons(operationButtonsContainer, [`÷`, `x`, `–`, `+`]);
 
 const clearButtonContainer = document.querySelector('.outer-clear-button-container');
 createButtons(clearButtonContainer, 1);
 addClassToButtons(clearButtonContainer, 'clear-button-container', 'buttons');
-addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button')
+addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button');
 addContentToButtons(clearButtonContainer, [`AC`]);
 
 // Operations
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
-numberButtons.forEach(btn => btn.addEventListener('click', input));
-numberButtons.forEach(btn => btn.addEventListener('transitionend', removeTransition));
+numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
+numberButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
 
 const operationButtons = document.querySelectorAll('.operation-buttons-container');
-operationButtons.forEach(btn => btn.addEventListener('click', input));
-operationButtons.forEach(btn => btn.addEventListener('transitionend', removeTransition));
+operationButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
+operationButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
 
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', clear);
-clearButton.addEventListener('transitionend', removeTransition)
+clearButton.addEventListener('transitionend', removeTransition);
