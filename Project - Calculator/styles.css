@@ -119,6 +119,7 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.651);
     cursor: pointer;
+    transition: all .03s;
 }
 
 .number-buttons {
@@ -134,4 +135,8 @@ body {
     height: 5rem;
     width: 187px;
     margin: 7px;
+}
+
+.clicking {
+    transform: scale(.99)
 }

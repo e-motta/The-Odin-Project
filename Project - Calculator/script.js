@@ -13,6 +13,7 @@ function operate (operator, a, b) {
 }
 
 function input () {
+    this.classList.toggle('clicking');
     const displayInput = document.querySelector(`.display-input`)
     if (this.innerText === `=`) {
         return result(this.innerText);
@@ -27,12 +28,18 @@ function input () {
 }
 
 function clear () {
+    this.classList.toggle('clicking');
     const displayInput = document.querySelector(`.display-input`)
     displayInput.innerText = `0`;
 }
 
 function result () {
-    
+
+}
+
+function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('clicking');
 }
 
 // Functions for creating buttons
@@ -89,9 +96,12 @@ addContentToButtons(clearButtonContainer, [`AC`]);
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
 numberButtons.forEach(btn => btn.addEventListener('click', input));
+numberButtons.forEach(btn => btn.addEventListener('transitionend', removeTransition));
 
 const operationButtons = document.querySelectorAll('.operation-buttons-container');
 operationButtons.forEach(btn => btn.addEventListener('click', input));
+operationButtons.forEach(btn => btn.addEventListener('transitionend', removeTransition));
 
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', clear);
+clearButton.addEventListener('transitionend', removeTransition)
