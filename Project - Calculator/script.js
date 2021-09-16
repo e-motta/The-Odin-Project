@@ -15,38 +15,34 @@ function operate (operator, a, b) {
 
 function input () {
     this.classList.toggle('clicking');
-    const displayInput = document.querySelector(`.display-input`)
 
     if (this.innerText === `+`
             || this.innerText === `-`
             || this.innerText === `x`
             || this.innerText === `÷`) {
-        if (displayInput.innerText.includes(`+`)
-                || displayInput.innerText.includes(`-`)
-                || displayInput.innerText.includes(`x`)
-                || displayInput.innerText.includes(`÷`)) {
+        if (displayUpper.innerText.includes(`+`)
+                || displayUpper.innerText.includes(`-`)
+                || displayUpper.innerText.includes(`x`)
+                || displayUpper.innerText.includes(`÷`)) {
             return;
         }
     }
 
-    if (this.innerText === `=`) return result(displayInput.innerText);
+    if (this.innerText === `=`) return result(displayUpper.innerText);
     
-    if (displayInput.innerText === `0`) displayInput.innerText = ``;
+    if (displayUpper.innerText === `0`) displayUpper.innerText = ``;
 
-    if (displayInput.innerText.length < 9) displayInput.innerText += this.innerText;  // Max 9 characters
+    if (displayUpper.innerText.length < 9) displayUpper.innerText += this.innerText;  // Max 9 characters
 }
 
 function clear () {
     this.classList.toggle('clicking');
-    const displayInput = document.querySelector(`.display-input`);
-    displayInput.innerText = `0`;
-    const displayResult = document.querySelector(`.display-result`);
-    displayResult.innerText = `ㅤ`;
+    displayUpper.innerText = `0`;
+    displayLower.innerText = `ㅤ`;
 }
 
 function result (input) {
-    const displayResult = document.querySelector(`.display-result`);
-    displayResult.innerText = input;
+    displayLower.innerText = input;
     
     const [a, b] = input.split(/[^0-9.]/);
     const operator = input.replace(/[0-9.]/g, '');
@@ -55,8 +51,7 @@ function result (input) {
     output = +parseFloat(output).toFixed(7);  // Max 7 decimals
     if (output.toString().length > 9) output = output.toString().slice(0, 9);  // Max 9 characters
     
-    const displayInput = document.querySelector(`.display-input`);
-    displayInput.innerText = output;
+    displayUpper.innerText = output;
 }
 
 // Function for removing clicking transition
@@ -66,7 +61,7 @@ function removeTransition(e) {
     this.classList.remove('clicking');
 }
 
-// Functions for creating buttons
+// Functions for creating buttons inside divs
 
 function createButtons (container, numberOfButtons) {
     for(let i = 0; i < numberOfButtons; i++) {
@@ -114,7 +109,10 @@ addClassToButtons(clearButtonContainer, 'clear-button-container', 'buttons');
 addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button');
 addContentToButtons(clearButtonContainer, [`AC`]);
 
-// Event listeners for operations
+// Add event listeners for operations
+
+const displayUpper = document.querySelector(`.display-input`);
+const displayLower = document.querySelector(`.display-result`);
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
 numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
