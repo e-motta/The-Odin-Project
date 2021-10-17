@@ -8,50 +8,51 @@ const divide = (a, b) => +a / +b;
 function operate (operator, a, b) {
     if(operator === `+`) return add(a, b);
     else if(operator === `-`) return subtract(a, b);
-    else if(operator === `x`) return multiply(a, b);
+    else if(operator === `×`) return multiply(a, b);
     else if(operator === `÷`) return divide(a, b);
     else return a;
 }
 
-function input () {
-    this.classList.toggle('clicking');
-
-    if (this.innerText === `+`
-            || this.innerText === `-`
-            || this.innerText === `x`
-            || this.innerText === `÷`) {
-        if (displayUpper.innerText.includes(`+`)
-                || displayUpper.innerText.includes(`-`)
-                || displayUpper.innerText.includes(`x`)
-                || displayUpper.innerText.includes(`÷`)) {
-            return;
-        }
-    }
-
-    if (this.innerText === `=`) return result(displayUpper.innerText);
-    
-    if (displayUpper.innerText === `0`) displayUpper.innerText = ``;
-
-    if (displayUpper.innerText.length < 9) displayUpper.innerText += this.innerText;  // Max 9 characters
-}
-
-function clear () {
-    this.classList.toggle('clicking');
-    displayUpper.innerText = `0`;
-    displayLower.innerText = `ㅤ`;
-}
-
-function result (input) {
-    displayLower.innerText = input;
-    
-    const [a, b] = input.split(/[^0-9.]/);
-    const operator = input.replace(/[0-9.]/g, '');
+function result (operator, a, b) {
+    displayUpper.innerText = `${a} ${operator} ${b} =`;
     
     let output = operate(operator, a, b);
     output = +parseFloat(output).toFixed(7);  // Max 7 decimals
     if (output.toString().length > 9) output = output.toString().slice(0, 9);  // Max 9 characters
     
-    displayUpper.innerText = output;
+    displayLower.innerText = output;
+    a = output;
+}
+
+function numberInput () {
+    this.classList.toggle('clicking');
+    if (this.innerText === `=`) {
+        number = ``;
+        return result(operator, a, b);
+    }
+    if (displayLower.innerText === `0`) displayLower.innerText = ``;
+    if (displayLower.innerText.length < 9) number += this.innerText;  // Max 9 characters
+}
+
+function operatorInput () {
+    this.classList.toggle('clicking');
+    operator = this.innerText;
+    if (a === ``) {
+        a = number;
+        number = ``;
+    } else {
+        b = number;
+    }
+}
+
+function clear () {
+    this.classList.toggle('clicking');
+    displayLower.innerText = `0`;
+    displayUpper.innerText = `ㅤ`;
+    number = ``
+    a = ``;
+    b = ``;
+    operator = ``;
 }
 
 // Function for removing clicking transition
@@ -101,7 +102,7 @@ const operationButtonsContainer = document.querySelector('.outer-operation-butto
 createButtons(operationButtonsContainer, 4);
 addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'buttons');
 addClassToButtons(operationButtonsContainer, 'operation-buttons-container', 'operation-buttons');
-addContentToButtons(operationButtonsContainer, [`÷`, `x`, `-`, `+`]);
+addContentToButtons(operationButtonsContainer, [`÷`, `×`, `-`, `+`]);
 
 const clearButtonContainer = document.querySelector('.outer-clear-button-container');
 createButtons(clearButtonContainer, 1);
@@ -109,17 +110,24 @@ addClassToButtons(clearButtonContainer, 'clear-button-container', 'buttons');
 addClassToButtons(clearButtonContainer, 'clear-button-container', 'clear-button');
 addContentToButtons(clearButtonContainer, [`AC`]);
 
+// Variables and operator
+
+let number = ``;
+let a = ``;
+let b = ``;
+let operator = ``;
+
 // Add event listeners for operations
 
-const displayUpper = document.querySelector(`.display-input`);
-const displayLower = document.querySelector(`.display-result`);
+const displayLower = document.querySelector(`.display-input`);
+const displayUpper = document.querySelector(`.display-result`);
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
-numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
+numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', numberInput));
 numberButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
 
 const operationButtons = document.querySelectorAll('.operation-buttons-container');
-operationButtons.forEach(btn => btn.childNodes[0].addEventListener('click', input));
+operationButtons.forEach(btn => btn.childNodes[0].addEventListener('click', operatorInput));
 operationButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
 
 const clearButton = document.querySelector('.clear-button');
