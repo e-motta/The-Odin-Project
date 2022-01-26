@@ -1,0 +1,14 @@
+#head1,
+.title {
+    color: red;
+}
+
+.title {
+    font-size: 40px;
+    font-family: sans-serif;
+}
+
+.list {
+    color: darkslategray;
+    font-family: Helvetica, sans-serif;
+}
