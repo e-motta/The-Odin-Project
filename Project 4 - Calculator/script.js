@@ -1,71 +1,119 @@
-// Functions for operations
-
-const add = (a, b) => +a + +b;
-const subtract = (a, b) => +a - +b;
-const multiply = (a, b) => +a * +b;
-const divide = (a, b) => +a / +b;
+// Functions for performing operations
 
 function operate (operator, a, b) {
-    if(operator === `+`) return add(a, b);
-    else if(operator === `-`) return subtract(a, b);
-    else if(operator === `×`) return multiply(a, b);
-    else if(operator === `÷`) return divide(a, b);
+    if(operator === `+`) return +a + +b;
+    else if(operator === `-`) return +a - +b;
+    else if(operator === `×`) return +a * +b;
+    else if(operator === `÷`) return +(+a / +b).toPrecision(5);
     else return a;
 }
 
-function result (operator, a, b) {
-    displayUpper.innerText = `${a} ${operator} ${b} =`;
-    
-    let output = operate(operator, a, b);
-    output = +parseFloat(output).toFixed(7);  // Max 7 decimals
-    if (output.toString().length > 9) output = output.toString().slice(0, 9);  // Max 9 characters
-    
-    displayLower.innerText = output;
-    a = output;
-}
+
+// Functions for displaying operations and results
 
 function numberInput () {
     this.classList.toggle('clicking');
-    if (this.innerText === `=`) {
-        number = ``;
-        return result(operator, a, b);
+    
+    if (this.innerText.includes('.') && displayLower.innerText.includes('.')) {
+        return
     }
-    if (displayLower.innerText === `0`) displayLower.innerText = ``;
-    if (displayLower.innerText.length < 9) number += this.innerText;  // Max 9 characters
+
+    if ((input === `` && this.innerText !== '0') || (input !== ``)) {
+        if (displayLower.innerText.length < 7) {  // Max 7 characters
+            input += this.innerText;
+            if (displayLower.innerText === `0`) {
+                displayLower.innerText = this.innerText;
+            } else {
+                displayLower.innerText += this.innerText;
+            }
+        }
+    }
 }
+
+
+function setOperands () {
+    if (a === `` && first_number) {
+        a = input;
+        input = ``;
+        first_number = false;
+        return
+    }
+
+    if (b === `` && a !== ``) {
+        b = input;
+        input = ``;
+        return
+    }
+}
+
 
 function operatorInput () {
     this.classList.toggle('clicking');
-    operator = this.innerText;
-    if (a === ``) {
-        a = number;
-        number = ``;
-    } else {
-        b = number;
+    
+    dl_text = displayLower.innerText
+    if (!dl_text.includes(`+`) && 
+        !dl_text.includes(`-`) && 
+        !dl_text.includes(`×`) && 
+        !dl_text.includes(`÷`)) {
+        operator = this.innerText;
+        displayLower.innerText += operator;
     }
+
+    if (result) {
+        b = ``;
+        a = result;
+        first_number = false;
+        return
+    }
+
+    setOperands()
 }
+
+
+function equalsInput () {
+    setOperands()
+    
+    if (this.id === "btn-=") {
+        this.classList.toggle('clicking');
+    }
+    if (b === ``) {
+        displayUpper.innerText = displayLower.innerText + ` =`;
+    }
+    if (a !== `` && b !== ``) {
+        result = operate(operator, a, b);
+        displayUpper.innerText = displayLower.innerText + ` =`;
+        displayLower.innerText = result;
+    }
+
+    return result
+}
+
 
 function clear () {
     this.classList.toggle('clicking');
     displayLower.innerText = `0`;
     displayUpper.innerText = `ㅤ`;
-    number = ``
+    input = ``
     a = ``;
     b = ``;
     operator = ``;
+    first_number = true;
+    result = 0;
 }
+
 
 // Function for removing clicking transition
 
 function removeTransition(e) {
-    if(e.propertyName !== 'transform') return;
+    if (e.propertyName !== 'transform') return;
     this.classList.remove('clicking');
 }
+
 
 // Functions for creating buttons inside divs
 
 function createButtons (container, numberOfButtons) {
-    for(let i = 0; i < numberOfButtons; i++) {
+    for (let i = 0; i < numberOfButtons; i++) {
         const div = document.createElement('div');
         const button = document.createElement('button');
         button.type="button";
@@ -74,12 +122,14 @@ function createButtons (container, numberOfButtons) {
     }
 }
 
+
 function addClassToButtons (container, divClass, buttonClass) {
     let divs = container.querySelectorAll('div');
     divs.forEach((e) => e.classList.add(divClass));
     let buttons = container.querySelectorAll('button');
     buttons.forEach((e) => e.classList.add(buttonClass));
 }
+
 
 function addContentToButtons (container, buttonNames) {
     let buttons = container.querySelectorAll('button');
@@ -89,7 +139,8 @@ function addContentToButtons (container, buttonNames) {
     }
 }
 
-// Create all buttons
+
+// Create all buttons and containers
 
 const numberButtonsContainer = document.querySelector('.outer-number-buttons-container');
 createButtons(numberButtonsContainer, 12);
@@ -97,6 +148,8 @@ addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'buttons')
 addClassToButtons(numberButtonsContainer, 'number-buttons-container', 'number-buttons');
 addContentToButtons(numberButtonsContainer, [`7`, `8`, `9`, `4`, `5`, `6`, `1`, `2`, `3`, `.`, `0`, `=`]);
 numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).style="background-color:rgb(138, 126, 121)";
+numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).classList = "buttons equals-button"
+numberButtonsContainer.querySelector("#" + CSS.escape("btn-=")).parentElement.classList = "equals-button-container"
 
 const operationButtonsContainer = document.querySelector('.outer-operation-buttons-container');
 createButtons(operationButtonsContainer, 4);
@@ -112,23 +165,37 @@ addContentToButtons(clearButtonContainer, [`AC`]);
 
 // Variables and operator
 
-let number = ``;
+let input = ``;
 let a = ``;
 let b = ``;
 let operator = ``;
+let first_number = true;
+let result = 0
 
 // Add event listeners for operations
 
-const displayLower = document.querySelector(`.display-input`);
-const displayUpper = document.querySelector(`.display-result`);
+const displayLower = document.querySelector(`.display-lower`);
+const displayUpper = document.querySelector(`.display-upper`);
 
 const numberButtons = document.querySelectorAll('.number-buttons-container');
-numberButtons.forEach(btn => btn.childNodes[0].addEventListener('click', numberInput));
-numberButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
+numberButtons.forEach(btn => {
+    btn.childNodes[0].addEventListener('click', numberInput)
+});
+numberButtons.forEach(btn => {
+    btn.childNodes[0].addEventListener('transitionend', removeTransition)
+});
 
 const operationButtons = document.querySelectorAll('.operation-buttons-container');
-operationButtons.forEach(btn => btn.childNodes[0].addEventListener('click', operatorInput));
-operationButtons.forEach(btn => btn.childNodes[0].addEventListener('transitionend', removeTransition));
+operationButtons.forEach(btn => {
+    btn.childNodes[0].addEventListener('click', operatorInput)
+});
+operationButtons.forEach(btn => {
+    btn.childNodes[0].addEventListener('transitionend', removeTransition)
+});
+
+const equalsButton = document.querySelector('.equals-button')
+equalsButton.addEventListener('click', equalsInput);
+equalsButton.addEventListener('transitionend', removeTransition);
 
 const clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', clear);
