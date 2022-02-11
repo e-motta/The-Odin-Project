@@ -1,6 +1,5 @@
 # PROJECT: LANDING PAGE
-## The Odin Project
-A generic landing page.<br>
+A generic landing page.<br><br>
 https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/landing-page<br><br>
 
 ## Live preview
